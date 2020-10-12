@@ -6,5 +6,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   belongs_to :office
   accepts_nested_attributes_for :office
-  
+  has_many :calendars, dependent: :destroy
 end

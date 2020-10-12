@@ -1,10 +1,11 @@
 class CalendarsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
 
   # GET /calendars
   # GET /calendars.json
   def index
-    @calendars = Calendar.all
+    @calendars = current_user.calendars.all 
   end
 
   # GET /calendars/1
@@ -25,6 +26,7 @@ class CalendarsController < ApplicationController
   # POST /calendars.json
   def create
     @calendar = Calendar.new(calendar_params)
+    @calendar.user_id = current_user.id
 
     respond_to do |format|
       if @calendar.save
