@@ -2,6 +2,21 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+  <%= f.fields_for :office, Office.new do |c| %>
+
+    <div class= "field">
+    <%= c.label :name, 'Office Name' %>
+    <%= c.text_field :name %>
+    </div>
+
+    
+    <div class= "field">
+    <%= c.label :subdomain, 'Subdomain' %>
+    <%= c.text_field :subdomain %>
+    </div>
+    <% end %>
+    
+
 
   <div class="field">
     <%= f.label :email %><br />
