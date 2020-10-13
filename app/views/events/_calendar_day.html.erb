@@ -1,0 +1,9 @@
+<%= calendar  events: @events do |date, events| %>
+    <%= date %>
+    <% events.each do |event| %>
+        <div>
+        <%= event.subject %>
+        </div>
+        <% end %>
+
+  <% end %>
