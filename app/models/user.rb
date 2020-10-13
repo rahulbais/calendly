@@ -7,4 +7,5 @@ class User < ApplicationRecord
   belongs_to :office
   accepts_nested_attributes_for :office
   has_many :calendars, dependent: :destroy
+  has_many :events, dependent: :destroy
 end
