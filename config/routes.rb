@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :grievances do
+   resources :pipelines, except: [:index, :show] do
+    resources :items, except: [:index, :show]
+   end 
+  end 
   resources :events
   resources :calendars
   devise_for :users

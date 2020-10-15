@@ -1,6 +1,12 @@
 class ApplicationController < ActionController::Base
     before_action :configure_permitted_parameters, if: :devise_controller?
 
+    def current_office
+        return nil unless user_signed_in?
+        @current_office ||= current_user.office
+    end
+    helper_method :current_office
+
     protected
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) do |user_params|

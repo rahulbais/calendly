@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Office:</strong>
+  <%= @grievance.office_id %>
+</p>
+
+<p>
+  <strong>List name:</strong>
+  <%= @grievance.list_name %>
+</p>
+<%= content_tag :div, class: :row do %>
+  <% @grievance.pipelines.each do |pipeline| %>
+    <div class='col'>
+    <div class='card'>
+    <h5 class='card-title'> <%= pipeline.name %> </div>
+    <div class='card-body'>
+    <%= content_tag :ul, class: 'card-text dropzone' do %>
+      <%= render pipeline.items, grievance: @grievance, pipeline: pipeline %>
+      <% end %>
+      <%= link_to 'New Grievances', [:new, @grievance, pipeline, :item] %>
+      </div>
+      </div>
+      </div>
+      <% end %>
+  <% end %>
+
+<%= link_to 'New Pipeline', [:new, @grievance, :pipeline] %> |
+<%= link_to 'Edit', edit_grievance_path(@grievance) %> |
+<%= link_to 'Back', grievances_path %>
