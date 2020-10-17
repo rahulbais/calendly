@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_office
 
+
+    def current_account
+        @current_account ||= current_user.account
+        @current_account
+    end 
+    helper_method :current_account
+
     protected
     def configure_permitted_parameters
         devise_parameter_sanitizer.permit(:sign_up) do |user_params|

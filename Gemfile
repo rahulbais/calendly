@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'devise'
 gem 'trix'
 gem "simple_calendar", "~> 2.0"
+gem "rolify"
+
 
 
 # Use Active Storage variant
