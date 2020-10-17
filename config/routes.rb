@@ -6,8 +6,8 @@ Rails.application.routes.draw do
   end 
   resources :events
   resources :calendars
-  devise_for :users 
-  resources :users, only:[:index, :edit, :show, :update]
+  devise_for :users, path: 'auth'
+  resources :users
   resources :offices
   root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

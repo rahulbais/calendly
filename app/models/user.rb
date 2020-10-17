@@ -12,9 +12,8 @@ class User < ApplicationRecord
 
   def assign_default_role
     if User.count == 1
-      self.add_role(:superadmin) if self.roles.blank?
+      self.add_role(:admin) if self.roles.blank?
     else 
-      self.add_role(:chief) 
       self.add_role(:staff) 
 
   end 
