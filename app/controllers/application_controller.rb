@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
     helper_method :current_office
 
 
-    def current_account
-        @current_account ||= current_user.account
-        @current_account
-    end 
-    helper_method :current_account
 
     protected
     def configure_permitted_parameters
