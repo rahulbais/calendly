@@ -25,6 +25,8 @@ gem 'devise'
 gem 'trix'
 gem "simple_calendar", "~> 2.0"
 gem "rolify"
+gem 'devise_invitable', '~> 2.0.0'
+
 
 
 
