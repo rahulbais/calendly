@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end 
   resources :events
   resources :calendars
-  devise_for :users, path: 'auth'
+  devise_for :users, path: 'auth', controllers: { invitations: 'users_invitations' }
   resources :users
   resources :offices
   root 'welcome#index'
