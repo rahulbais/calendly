@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th>Office</th>
-      <th colspan="4"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -16,13 +16,12 @@
         <td><%= user.office_id %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
+<% if policy(:user).new? %>
 <%= link_to 'New User', new_user_path %>
+<% end %>
