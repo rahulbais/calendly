@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :citizens, path: 'citizens', controllers: { sessions: "citizens/sessions" }
   resources :grievances do
    resources :pipelines, except: [:index, :show] do
     resources :items, except: [:index, :show]
