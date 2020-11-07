@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :appointments
+  resources :customers
+  resources :meetings
   devise_for :citizens, path: 'citizens', controllers: { sessions: "citizens/sessions" }
   resources :grievances do
    resources :pipelines, except: [:index, :show] do

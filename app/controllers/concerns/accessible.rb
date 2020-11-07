@@ -6,7 +6,7 @@ module Accessible
   
     protected
     def check_user
-      if current_user
+      if current_office
         flash.clear
         # if you have rails_admin. You can redirect anywhere really
         redirect_to(root_path) and return

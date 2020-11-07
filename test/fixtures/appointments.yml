@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  office: one
+  citizen: one
+  subject: MyString
+  venue: MyString
+
+two:
+  office: two
+  citizen: two
+  subject: MyString
+  venue: MyString

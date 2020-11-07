@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  start_time: 2020-11-05 07:37:51
+  end_time: 2020-11-05 07:37:51
+  user: one
+  citizen: one
+
+two:
+  start_time: 2020-11-05 07:37:51
+  end_time: 2020-11-05 07:37:51
+  user: two
+  citizen: two

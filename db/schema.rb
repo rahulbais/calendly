@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_04_100927) do
+ActiveRecord::Schema.define(version: 2020_11_07_055715) do
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2020_11_04_100927) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.integer "office_id", null: false
+    t.integer "citizen_id", null: false
+    t.string "subject"
+    t.string "venue"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["citizen_id"], name: "index_appointments_on_citizen_id"
+    t.index ["office_id"], name: "index_appointments_on_office_id"
+  end
+
   create_table "calendars", force: :cascade do |t|
     t.string "subject"
     t.datetime "start_time"
@@ -63,6 +74,15 @@ ActiveRecord::Schema.define(version: 2020_11_04_100927) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_citizens_on_email", unique: true
     t.index ["reset_password_token"], name: "index_citizens_on_reset_password_token", unique: true
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_customers_on_user_id"
   end
 
   create_table "events", force: :cascade do |t|
@@ -88,6 +108,18 @@ ActiveRecord::Schema.define(version: 2020_11_04_100927) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["pipeline_id"], name: "index_items_on_pipeline_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.integer "user_id", null: false
+    t.integer "citizen_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
+    t.index ["citizen_id"], name: "index_meetings_on_citizen_id"
+    t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
   create_table "offices", force: :cascade do |t|
@@ -151,10 +183,15 @@ ActiveRecord::Schema.define(version: 2020_11_04_100927) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appointments", "citizens"
+  add_foreign_key "appointments", "offices"
   add_foreign_key "calendars", "users"
+  add_foreign_key "customers", "users"
   add_foreign_key "events", "users"
   add_foreign_key "grievances", "offices"
   add_foreign_key "items", "pipelines"
+  add_foreign_key "meetings", "citizens"
+  add_foreign_key "meetings", "users"
   add_foreign_key "pipelines", "grievances"
   add_foreign_key "users", "offices"
 end

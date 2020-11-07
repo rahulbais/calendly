@@ -7,10 +7,17 @@ class ApplicationController < ActionController::Base
     end
     helper_method :current_office
 
+   
+    devise_group :client, contains: [:user, :citizen]
+    
+    alias_method :devise_current_user, :current_office
+    
+    def current_office
+    devise_current_user || current_citizen
+    end
+
 
     include Pundit
-
-    
 
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   
