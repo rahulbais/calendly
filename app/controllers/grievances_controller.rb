@@ -1,5 +1,5 @@
 class GrievancesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_client!
   before_action :set_grievance, only: [:show, :edit, :update, :destroy]
 
   # GET /grievances
